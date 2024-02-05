@@ -1,0 +1,72 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header, footer {
+    background-color: #dcac64;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #111;
+}
+
+/* Estilos para la sección del banner */
+.banner {
+    background-color: #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Estilos para la sección de productos */
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.producto {
+    background-color: white;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 15px;
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    margin-top: 20px;
+}

@@ -1,0 +1,112 @@
+/* Estilo general del contenedor de la tabla */
+#productos {
+    width: 100%;
+    overflow-x: auto; /* Útil si la tabla es muy ancha */
+}
+
+/* Estilos básicos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9em;
+    font-family: 'Arial', sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Alineación horizontal al centro */
+}
+
+/* Estilo para el encabezado de la tabla */
+table thead tr {
+    background-color: #f3d8c7; /* Color pastel para el encabezado */
+}
+
+table thead th,
+table tbody td {
+    text-align: center; /* Alineación central para todo el contenido de la tabla */
+    padding: 10px 15px;
+    border-bottom: 1px solid #dddddd;
+    vertical-align: middle; /* Alineación vertical al medio */
+}
+
+/* Estilo para las filas alternas */
+table tbody tr:nth-of-type(even) {
+    background-color: #f3e9e7;
+}
+
+/* Estilo para la última fila */
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #f3d8c7;
+}
+
+.cantidad-baja {
+    background-color: #ffcccc; /* Un tono rojo suave */
+}
+
+/* Estilo para botones de acción como 'Editar' */
+.boton-editar,
+.boton-eliminar {
+    padding: 8px 15px; /* Tamaño más pequeño para ajustarse a la tabla */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center; /* Asegura que el texto dentro del botón esté centrado */
+}
+
+.boton-editar {
+    background-color: #2196F3; /* Color azul para botones de editar */
+}
+
+.boton-editar:hover {
+    background-color: #0b7dda; /* Color azul más oscuro al pasar el mouse */
+}
+
+.boton-eliminar {
+    background-color: #d9534f; /* Color rojo para botones de eliminar */
+}
+
+.boton-eliminar:hover {
+    background-color: #c9302c; /* Color rojo más oscuro al pasar el mouse */
+}
+.formulario-producto {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-producto label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.formulario-producto input[type="text"],
+.formulario-producto input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.formulario-producto button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formulario-producto button:hover {
+    background-color: #4cae4c;
+}
