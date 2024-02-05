@@ -1,7 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 const app = express();
-const {eliminarProducto,editarProducto, obtenerProductos, agregarProducto, obtenerUsuarios, agregarUsuario } = require('./backend');
+const {eliminarUsuario,eliminarProducto,editarProducto, obtenerProductos, agregarProducto, obtenerUsuarios, agregarUsuario,editarUsuario } = require('./backend');
 
 app.use(cors());
 app.use(express.json());
@@ -55,6 +55,66 @@ app.get('/productos', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('Error en el servidor');
+    }
+});
+
+//USUARIOS
+
+app.get('/usuarios', async (req, res) => {
+    try {
+        const usuarios = await obtenerUsuarios();
+        res.json(usuarios);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al obtener los usuarios');
+    }
+});
+app.put('/usuarios/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { nombre, permiso, correo } = req.body;
+        const usuarioActualizado = await editarUsuario(id, nombre, permiso, correo);
+
+        if (usuarioActualizado) {
+            res.json(usuarioActualizado);
+        } else {
+            res.status(404).send('Usuario no encontrado');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al actualizar el usuario');
+    }
+});
+
+
+app.post('/usuarios', async (req, res) => {
+    try {
+        const { nombre, permiso, correo, password } = req.body;
+        const resultado = await agregarUsuario(nombre, permiso, correo, password);
+        if (resultado > 0) {
+            res.status(201).send('Usuario agregado con éxito');
+        } else {
+            res.status(400).send('No se pudo agregar el usuario');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al agregar el usuario');
+    }
+});
+
+app.delete('/usuarios/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const usuarioEliminado = await eliminarUsuario(id);
+
+        if (usuarioEliminado) {
+            res.json({ mensaje: 'Usuario eliminado con éxito', usuario: usuarioEliminado });
+        } else {
+            res.status(404).send('Usuario no encontrado');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al eliminar el usuario');
     }
 });
 

@@ -31,10 +31,22 @@ async function obtenerUsuarios() {
     return res.rows;
 }
 
-async function agregarUsuario(nombre, permiso, correo) {
-    const res = await pool.query('INSERT INTO usuarios (nombre, permiso, correo) VALUES ($1, $2, $3)', [nombre, permiso, correo]);
+async function agregarUsuario(nombre, permiso, correo,password) {
+    const res = await pool.query('INSERT INTO usuarios (nombre, permiso, correo,password) VALUES ($1, $2, $3,$4)', [nombre, permiso, correo,password]);
     return res.rowCount;
 }
+
+async function editarUsuario(id, nombre, permiso, correo) {
+    const res = await pool.query('UPDATE usuarios SET nombre = $2, permiso = $3, correo = $4 WHERE id = $1 RETURNING *', [id, nombre, permiso, correo]);
+    return res.rows[0];
+}
+
+async function eliminarUsuario(id) {
+    const res = await pool.query('DELETE FROM usuarios WHERE id = $1 RETURNING *', [id]);
+    return res.rows[0];
+}
+
+
 
 module.exports = {
     obtenerProductos,
@@ -42,5 +54,7 @@ module.exports = {
     editarProducto,
     obtenerUsuarios,
     agregarUsuario,
-    eliminarProducto
+    eliminarProducto,
+    editarUsuario,
+    eliminarUsuario
 };

@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Productos</title>
-    <link rel="stylesheet" href="/css/tablapr.css">
-    <link rel="stylesheet" href="/css/cssprincipal.css">k
+    <link rel="stylesheet" href="/css/cssprincipal.css">
+    <link rel="stylesheet" href="/css/usuarios.css">
+
 </head>
 <header>
     <h1>Bazar Piolin</h1>
@@ -17,11 +18,51 @@
     </nav>
 </header>
 <body>
-  
+
+    <div id="contenedor-usuarios">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Permiso</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="lista-usuarios">
+                <!-- Los usuarios se cargarán aquí dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <div class="formulario-usuario">
+        <h2>Agregar Usuario</h2>
+        <form id="agregarUsuarioForm">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="permiso">Permiso:</label>
+            <select id="permiso" name="permiso" required>
+                <option value="1">Dueño</option>
+                <option value="2">Vendedor</option>
+            </select>
+            
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" required>
+        
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+        
+            <button type="button" onclick="agregarUsuario()">Agregar Usuario</button>
+        </form>
+        
+    </div>
+    
 </body>
 </html>
 
-
+<script src="/js/usuarios.js"></script>
 <footer>
     <p>&copy; Bazar Piolin. Todos los derechos reservados.</p>
 </footer>

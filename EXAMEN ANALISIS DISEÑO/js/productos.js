@@ -135,3 +135,4 @@ async function eliminarProducto(id) {
         alert('Error al eliminar el producto: ' + error.message);
     }
 }
+

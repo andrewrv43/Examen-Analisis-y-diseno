@@ -1,0 +1,115 @@
+/* Estilo General */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+
+}
+
+/* Estilo para la Tabla */
+#lista-usuarios {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#lista-usuarios th, 
+#lista-usuarios td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#lista-usuarios th {
+    background-color: #78909C;
+    color: white;
+    text-transform: uppercase;
+}
+
+#lista-usuarios tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#lista-usuarios tr:hover {
+    background-color: #CFD8DC;
+}
+
+/* Estilo para los Botones */
+.boton-editar, .boton-eliminar {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-editar {
+    background-color: #FFCA28;
+    color: black;
+}
+
+.boton-editar:hover {
+    background-color: #FFB300;
+}
+
+.boton-eliminar {
+    background-color: #EF5350;
+    color: white;
+}
+
+.boton-eliminar:hover {
+    background-color: #D32F2F;
+}
+
+/* Estilo General para el Formulario */
+/* Estilo General para el Formulario */
+#agregarUsuarioForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 30px auto;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#agregarUsuarioForm label {
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    width: 100%;
+}
+
+#agregarUsuarioForm input, #agregarUsuarioForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+/* Estilo para el Botón de Agregar Usuario */
+#agregarUsuarioForm button {
+    background-color: #FFD700; /* Color amarillo medio */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+#agregarUsuarioForm button:hover {
+    background-color: #FFC107; /* Amarillo más claro al pasar el cursor */
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
