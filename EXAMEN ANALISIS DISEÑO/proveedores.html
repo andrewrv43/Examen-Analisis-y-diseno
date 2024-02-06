@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proveedores</title>
+    <link rel="stylesheet" href="/css/tablapr.css">
+    <link rel="stylesheet" href="/css/cssprincipal.css">
+</head>
+<body>
+    <header>
+        <h1>Bazar Piolin</h1>
+        <nav>
+            <ul>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="index.html" onclick="cerrarSesion()">Cerrar Sesion</a></li>
+                <li><a href="usuarios.html">Usuarios</a></li>
+                <li><a href="proveedores.html">Proveedores</a></li>
+                <li><a href="reportes.html">Reportes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Proveedores</h1>
+    <div id="proveedores"></div>
+
+    <div class="formulario-proveedor">
+        <h2>Agregar Proveedor</h2>
+        <label for="nombreProveedor">Nombre del Proveedor:</label>
+        <input type="text" id="nombreProveedor" name="nombreProveedor" required>       
+
+        <button onclick="agregarProveedor()">Agregar Proveedor</button>
+    </div>  
+
+    <script src="/js/proveedores.js"></script>
+    <script src="/js/verificar.js"></script>
+    <footer>
+        <p>&copy; Bazar Piolin. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

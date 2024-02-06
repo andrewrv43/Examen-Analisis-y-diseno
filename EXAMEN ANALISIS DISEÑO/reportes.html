@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+    <link rel="stylesheet" href="/css/reportes.css">
+    <link rel="stylesheet" href="/css/cssprincipal.css">
+</head>
+<header>
+    <h1>Bazar Piolin</h1>
+    <nav>
+        <ul>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="index.html" onclick="cerrarSesion()">Cerrar Sesion</a></li>
+            <li><a href="usuarios.html">Usuarios</a></li>
+            <li><a href="proveedores.html">Proveedores</a></li>
+            <li><a href="reportes.html">Reportes</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+    <div class="descargas">
+        <button onclick="descargarProductosBajoMinimo()">Descargar Productos Bajo Mínimo</button>
+        <button onclick="descargarConteoProveedores()">Descargar Conteo de Proveedores</button>
+    </div>
+</body>
+</html>
+
+<script src="/js/verificar.js"></script>
+<script src="/js/reportes.js"></script>
+<footer>
+    <p>&copy; Bazar Piolin. Todos los derechos reservados.</p>
+</footer>

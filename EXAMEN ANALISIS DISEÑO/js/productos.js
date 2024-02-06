@@ -8,8 +8,39 @@ async function cargarProductos() {
     }
 }
 
-function habilitarEdicion(e) {
+async function obtenerProveedores() {
+    try {
+        const response = await fetch('http://localhost:3000/proveedores');
+        if (!response.ok) {
+            throw new Error('Error al obtener proveedores');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+function crearComboboxProveedores(proveedores, proveedorActual) {
+    const select = document.createElement('select');
+    proveedores.forEach(proveedor => {
+        const option = document.createElement('option');
+        option.value = proveedor.nombre;
+        option.textContent = proveedor.nombre;
+        option.selected = proveedor.nombre === proveedorActual;
+        select.appendChild(option);
+    });
+    return select;
+}
+
+
+async function habilitarEdicion(e) {
     const fila = e.target.closest('tr');
+    const celdaProveedor = fila.querySelector('.proveedor');
+
+    const proveedores =await obtenerProveedores();
+    const comboboxProveedores = crearComboboxProveedores(proveedores, celdaProveedor.textContent);
+    celdaProveedor.innerHTML = '';
+    celdaProveedor.appendChild(comboboxProveedores);
     const celdaCantidad = fila.querySelector('.cantidad');
     celdaCantidad.contentEditable = true;
     celdaCantidad.focus();
@@ -25,13 +56,14 @@ async function guardarEdicion(e) {
     const precio=fila.querySelector('.precio').textContent;
     const minimo=fila.querySelector('.minimo').textContent;
     const cantidad = fila.querySelector('.cantidad').textContent;
+    const proveedor = fila.querySelector('.proveedor select').value;
     try {
         const response = await fetch(`http://localhost:3000/productos/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ nombre:nombre,precio:precio,cantidad: cantidad,minimo:minimo })
+            body: JSON.stringify({ nombre:nombre,precio:precio,cantidad: cantidad,minimo:minimo,proveedor:proveedor })
         });
         if (!response.ok) throw new Error('Error al guardar la edición');
       
@@ -53,6 +85,7 @@ function mostrarProductos(productos) {
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
+                <th>Proveedor</th>
                 <th>Mínimo</th>
                 <th>Acción</th>
             </tr>
@@ -69,6 +102,7 @@ function mostrarProductos(productos) {
             <td class="nombre">${producto.nombre}</td>
             <td class="precio">${producto.precio}</td>
             <td class="cantidad">${producto.cantidad}</td>
+            <td class="proveedor">${producto.proveedor}</td>
             <td class="minimo">${producto.minimo}</td>
             <td>
                 <button class="boton-editar">Editar</button>
@@ -90,6 +124,7 @@ async function agregarProducto() {
     const precio = parseFloat(document.getElementById('precio').value);
     const cantidad = parseInt(document.getElementById('cantidad').value, 10);
     const minimo = parseInt(document.getElementById('minimo').value, 10);
+    const proveedor = document.getElementById('proveedor').value;
 
     try {
         const response = await fetch('http://localhost:3000/productos', {
@@ -97,7 +132,7 @@ async function agregarProducto() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ nombre, precio, cantidad, minimo })
+            body: JSON.stringify({ nombre, precio, cantidad, minimo, proveedor })
         });
 
         if (!response.ok) throw new Error(`Error al crear producto: ${response.status}`);
@@ -136,3 +171,19 @@ async function eliminarProducto(id) {
     }
 }
 
+async function cargarProveedoresSelect() {
+    try {
+        const response = await fetch('http://localhost:3000/proveedores');
+        const proveedores = await response.json();
+        const select = document.getElementById('proveedor');
+        proveedores.forEach(proveedor => {
+            const option = document.createElement('option');
+            option.value = proveedor.nombre;
+            option.textContent = proveedor.nombre;
+            select.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error al cargar los proveedores:', error);
+    }
+}
+document.addEventListener('DOMContentLoaded', cargarProveedoresSelect);
